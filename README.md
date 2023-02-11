@@ -20,6 +20,7 @@ where:
 $ python3 nmr.py ~/Documents/github/
 Allow nmr to delete the following folders? 
 ['/Users/XXXXX/Documents/github/XXXXX/node_modules/']
-Type "yes" to confirm: yes- /Users/XXXXX/Documents/github/XXXXX/node_modules/: deleted
+Type "yes" to confirm: yes
+- /Users/XXXXX/Documents/github/XXXXX/node_modules/: deleted
 --> 1 node_modules deleted.
 ```
