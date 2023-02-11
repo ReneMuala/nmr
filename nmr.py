@@ -40,7 +40,7 @@ def warn_user(folders:list[str])->bool:
     if len(folders) == 0:
         print("--> No valid folders found.")
         return False
-    return True if str(input(f"Allow nmr to delete the following folders? \n{folders}\nType \"yes\" to confirm: ")) == "yes" else False
+    return str(input(f"Allow nmr to delete the following folders? \n{folders}\nType \"yes\" to confirm: ")) == "yes"
 
 def delete_folders(folders:list[str]):
     for folder in folders:
