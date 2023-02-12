@@ -12,7 +12,20 @@ Safely remove all `node_modules/` in a set of node projects somewhere inside of 
 
 where:
 
-- `folderN` is a folder containing node projects (non node projects or node projects without `node_modules/` will be ignored)
+- `folderN` is a folder containing node projects (non node projects or node projects without `node_modules/` will be ignored).
+
+Example (`folderN` should be `foo` and not `project1` or `project2`):
+```
+foo/
+|
+|
+| project1/
+    | node_modules/...
+    | ...
+| project2/
+    | node_modules/...
+    | ...
+```
 
 ## Some outputs
 
