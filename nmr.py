@@ -25,11 +25,12 @@ SOFTWARE.
 import os
 from sys import argv
 from glob import glob
+from shutil import rmtree
 
 def map_folders(base_path: str)->list[str]:
     return glob(os.path.join(base_path, "*/node_modules/"))
 
-def filter_folder(folders:list[str])->list[str]:
+def filter_folders(folders:list[str])->list[str]:
     final_folders : list[str] = []
     for folder in folders:
         if os.path.isdir(folder) and not (folder == "/" or  folder == "."):
@@ -44,10 +45,8 @@ def warn_user(folders:list[str])->bool:
 
 def delete_folders(folders:list[str]):
     for folder in folders:
-        if os.system(f"rm -rf {folder}") == 0:
-            print(f"- {folder}: deleted")
-        else:
-            print(f"- {folder}: failed")
+        rmtree(folder, ignore_errors=True)
+        print(f"- {folder}: deleted")
 
 if __name__ == "__main__":
     if len(argv) == 1:
@@ -55,7 +54,7 @@ if __name__ == "__main__":
         exit(0)
     for arg in argv[1:]:
         folder_list = map_folders(arg)
-        folder_list = filter_folder(folder_list)
+        folder_list = filter_folders(folder_list)
         if(warn_user(folder_list)):
             delete_folders(folder_list)
             print(f"--> {len(folder_list)} node_modules deleted.")
